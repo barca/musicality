@@ -22,15 +22,6 @@ function writeText(user, message, myName, usersSeen){
     }
 }
 
-
-//var link_start =  "<iframe frameborder='0' height='100%' width='100%' src='https://www.youtube.com/embed/KMe_5O0mYj0?list=PLU7yGRdtgm632YDvughRw8-1Nj5xzW5V1";
-
-//var link_end = "&autoplay=1&controls=0&showinfo=0&autohide=1'>";
-$(document).ready(function(){
-    //$(".videoFrame").append(link_start + localStorage.getItem("request") + link_end);
-});
-
-
 $(document).bind("keydown",function(){
     $("#input").focus();
     $(document).unbind("keydown");
@@ -39,7 +30,6 @@ $(document).bind("keydown",function(){
 * createIO takes two arguments, the name of the project on imrapid(musicality)
 * and the room name(blood, the name of the first song) 
 */
-var room = createIO("musicality", "blood");
 
 $(document).keypress(function(e){
     if (e.which == 13){
@@ -61,23 +51,8 @@ $(document).keypress(function(e){
 * recieved message into the DOM with writeText. It will then scroll down to the newest message  
 */
 
-room.on("load_event", function(data){
-    console.log("HEYHEYEHYEHYEHYEHYE");
-    if(data.load_request_time === 0){
-        var ytplayer_window = document.getElementById("playerIFrame").contentWindow;
-        var player = ytplayer_window.yt.player.getPlayerByElement(ytplayer_window.player);
-        $.ajax({
-                type: "POST",
-                url: "https://musicality.imrapid.io/load",
-                data: {
-                    "video": "blood", 
-                    "load_request_index": player.getCurrentTime(),
-                    "load_request_time":  player.getCurrentIndex(),
-                },
-                });
-    }
-   
-});
+var room = createIO("musicality", "blood");
+
 room.on("message", function(data) {
 	writeText(data.user, data.message, localStorage.getItem("name") , JSON.parse(localStorage.getItem("users")));
 	var objDiv = document.getElementById("text");
@@ -95,10 +70,13 @@ function onYouTubePlayerAPIReady() {
     player = new YT.Player("player", {
       height: "100%",
       width: "100%",
+      videoId: 'KMe_5O0mYj0',
       playerVars:{
       "controls": 0,
       "showInfo": 0,
       "autoHide": 0,
+      "start" : parseInt(localStorage.getItem("secs")),
+      "iv_load_policy": 3
       },
       events: {
         "onReady": onPlayerReady,
@@ -106,10 +84,19 @@ function onYouTubePlayerAPIReady() {
     });
     }
 function onPlayerReady(event) {
-    event.target.loadPlaylist(
-      ["KMe_5O0mYj0","TWcyIpul8OE","Zo0UfKqwB94","ZMtNyG5OPqM", "xjoA4nYBD5U", "otx49Ko3fxw", "GNTspfhyn1c"], 
-      parseInt(localStorage.getItem("index")),
-      parseInt(localStorage.getItem("secs")),
-      "highres"
-      );
-}
+    event.target.playVideo()
+  }
+room.on("load_event", function(data) {
+    if(data.load_request_time === 0){
+        $.ajax({
+                type: "POST",
+                url: "https://musicality.imrapid.io/load",
+                data: {
+                    "video": "blood", 
+                    "load_request_time":  moment().diff(moment(localStorage.getItem("start")), "seconds")
+                },
+                });
+        alert("hey")
+    }
+
+});

@@ -1,6 +1,9 @@
 "use strict";
 function call(){
     var username = document.getElementById("username_input").value;
+    if(localStorage.getItem("load_request_time") == "0"){
+        localStorage.setItem("start", moment());
+    }
     if (username.length > 3){
         localStorage.setItem("name", username);
         localStorage.setItem("users", JSON.stringify([]));
@@ -26,25 +29,25 @@ $(document).keypress(function(){
 });
 var room = createIO("musicality", "blood");
 
-$(document).load(function(e){
-    if (e.which == 13){
-             $.ajax({
-                type: "POST",
-                url: "https://musicality.imrapid.io/load",
-                data: {
-                    "video": "blood", 
-                    "load_request_secs": "0",
-                    "load_request_index": "0",
-                },
-                });
-             localStorage.setItem = ("load_request_secs", 0);
-             localStorage.setItem = ("load_request_index", 0);
+$(document).ready(function(){
+    alert("sent")
+     $.ajax({
+        type: "POST",
+        url: "https://musicality.imrapid.io/load",
+        data: {
+            "video": "blood", 
+            "time": 120,
+        }
+        });
+     //localStorage.setItem("load_request_time", 0);
 
-    }
 });
 room.on("load_event", function(data) {
-    localStorage.setItem("secs", data.load_request_secs);
-    localStorage.setItem("index", data.load_request_index);
+    //if(data.load_request_time != "0"){
+        localStorage.setItem("time", data.time);
+        localStorage.setItem("started", 0); //moment().subtract(data.load_request_time, "seconds"));
+        alert(localStorage.getItem("time"))
+    //}
 });
  
 
