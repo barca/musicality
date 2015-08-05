@@ -37,7 +37,9 @@ $(document).load(function(e){
                     "load_request_index": "0",
                 },
                 });
-             localStorage.setItem = ("request", "");
+             localStorage.setItem = ("load_request_secs", 0);
+             localStorage.setItem = ("load_request_index", 0);
+
     }
 });
 room.on("load_event", function(data) {

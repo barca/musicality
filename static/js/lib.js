@@ -62,6 +62,7 @@ $(document).keypress(function(e){
 */
 
 room.on("load_event", function(data){
+    console.log("HEYHEYEHYEHYEHYEHYE");
     if(data.load_request_time === 0){
         var ytplayer_window = document.getElementById("playerIFrame").contentWindow;
         var player = ytplayer_window.yt.player.getPlayerByElement(ytplayer_window.player);
@@ -106,7 +107,7 @@ function onYouTubePlayerAPIReady() {
     }
 function onPlayerReady(event) {
     event.target.loadPlaylist(
-      ["KMe_5O0mYj0","TWcyIpul8OE","Zo0UfKqwB94","ZMtNyG5OPqM", "KHw7gdJ14uQ", "otx49Ko3fxw", "GNTspfhyn1c"], 
+      ["KMe_5O0mYj0","TWcyIpul8OE","Zo0UfKqwB94","ZMtNyG5OPqM", "xjoA4nYBD5U", "otx49Ko3fxw", "GNTspfhyn1c"], 
       parseInt(localStorage.getItem("index")),
       parseInt(localStorage.getItem("secs")),
       "highres"
