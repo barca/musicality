@@ -1,0 +1,50 @@
+.main{
+	position: absolute; 
+	z-index: 100;
+}
+.videoFrame{
+	position: absolute;
+	z-index: -100;
+	width: 100%;
+	height: 100%;
+}
+#input {
+  border: 0;
+  height: 34px;
+  background-color: #8C8C8C;
+}
+
+#btn {
+  border: 0;
+  height: 34px;
+  background-color: #8C8C8C;
+}
+
+h3 {
+	color: white;
+	margin-left: 5%;
+}
+.main {
+	height: 100vh;
+}
+.break {
+	height: 10vh;
+}
+*[class^="user-"] {
+	color: #32ff32;
+}
+.user-1 {
+	color: #00e5ee;
+}
+.user-2 {
+	color: #cc00cc;
+}
+.user-3 {
+	color: #ffff00;
+}
+
+.text-output {
+	height: 80vh;
+	overflow-y: scroll;
+	margin-left: 5%;
+}

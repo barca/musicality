@@ -1,0 +1,48 @@
+body {
+  background: url("background.jpg");
+}
+.main {
+  margin-top: 15%;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  background-color: rgba(99, 101, 107, 0.5);
+  border-radius: 25px;
+
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .input-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .input-control:focus {
+  z-index: 2;
+}
+.form-signin input {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+h2{
+  margin-top: 0px;
+  color: white;
+  text-align: center;
+}
+#title {
+  padding-top:3%;
+  color: white;
+  text-align: center;
+}
