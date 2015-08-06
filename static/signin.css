@@ -1,5 +1,8 @@
 body {
   background: url("background.jpg");
+  background: url("http://c1.staticflickr.com/9/8049/8101927779_d9823eff20_b.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 .main {
   margin-top: 15%;
@@ -23,8 +26,8 @@ body {
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
 }
@@ -36,6 +39,7 @@ body {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+
 h2{
   margin-top: 0px;
   color: white;
